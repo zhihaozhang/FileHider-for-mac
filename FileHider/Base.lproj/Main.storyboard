@@ -724,7 +724,7 @@
                                                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                                             <subviews>
                                                                                 <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" allowsCharacterPickerTouchBarItem="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CBh-Lf-0RQ">
-                                                                                    <rect key="frame" x="78" y="6" width="194" height="17"/>
+                                                                                    <rect key="frame" x="78" y="6" width="194" height="20"/>
                                                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                                                                     <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" title="Table View Cell" id="A3c-hp-riJ">
                                                                                         <font key="font" metaFont="system"/>
@@ -770,7 +770,7 @@
                                                     <font key="font" metaFont="system"/>
                                                 </buttonCell>
                                                 <connections>
-                                                    <action selector="openFile:" target="6Me-C4-TeD" id="Ptc-xT-EBc"/>
+                                                    <action selector="selectFile:" target="6Me-C4-TeD" id="EJo-Br-lej"/>
                                                 </connections>
                                             </button>
                                         </subviews>

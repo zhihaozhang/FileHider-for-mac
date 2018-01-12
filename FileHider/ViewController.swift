@@ -29,6 +29,24 @@ class ViewController: NSViewController {
         
     }
     
+    
+    @IBAction func selectFile(_ sender: Any) {
+        
+        let openPanel = NSOpenPanel()
+        
+        openPanel.message = "Please select file to Hide"
+        openPanel.canChooseDirectories = true
+        //    openPanel.allowsMultipleSelection = true
+        
+        openPanel.beginSheetModal(for: view.window!, completionHandler: {(result) in
+            if result == NSModalResponseOK{
+                self.selectedFolder = openPanel.url!
+            }
+        })
+        
+
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -41,22 +59,7 @@ class ViewController: NSViewController {
         }
     }
 
-    @IBAction func openFile(_ sender: Any) {
-        
-        let openPanel = NSOpenPanel()
-        
-        openPanel.message = "Please select file to Hide"
-        openPanel.canChooseDirectories = true
-    //    openPanel.allowsMultipleSelection = true
-        
-        openPanel.beginSheetModal(for: view.window!, completionHandler: {(result) in
-            if result == NSModalResponseOK{
-            //  self.selectedFolder = openPanel.url!
-            }
-        })
-        
-    }
-
+    
 }
 
 
@@ -71,9 +74,13 @@ extension ViewController: NSTableViewDelegate,NSTableViewDataSource{
         
         let item = filesList[row]
         
+        
         let fileIcon = NSWorkspace.shared().icon(forFile: item.path)
         
-        if let cell = tableview.make(withIdentifier: "FileCell", owner: nil) as? fileCellView {
+        
+        if let cell = tableView.make(withIdentifier: "FileCell", owner: nil)
+            as? fileCellView {
+            
             cell.myFileNameText?.stringValue = item.lastPathComponent
             cell.myimageview?.image = fileIcon
             return cell
