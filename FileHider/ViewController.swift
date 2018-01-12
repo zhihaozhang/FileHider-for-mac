@@ -11,9 +11,30 @@ import Cocoa
 class ViewController: NSViewController {
 
     @IBOutlet weak var tableview: NSTableView!
+    @IBOutlet var infoTextView: NSTextView!
     
+    @IBOutlet var fileImage: NSImageView!
     
     var filesList : [URL] = []
+    var selectedItem : URL? {
+        didSet {
+            guard let selectedUrl = selectedItem else {
+                return
+            }
+            
+            infoTextView.string = ""
+            
+             fileImage.image = NSWorkspace.shared().icon(forFile: selectedUrl.path)
+            
+            let infoString = infoAbout(url: selectedUrl)
+            if !infoString.isEmpty {
+                let formattedText = formatInfoText(infoString)
+                infoTextView.textStorage?.setAttributedString(formattedText)
+            }
+        
+        }
+        
+    }
     
     @IBOutlet weak var splitView: NSSplitView!
     
@@ -49,6 +70,9 @@ class ViewController: NSViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        view.wantsLayer = true
+        self.view.layer?.backgroundColor=NSColor.white.cgColor
+
 
         // Do any additional setup after loading the view.
     }
@@ -57,6 +81,39 @@ class ViewController: NSViewController {
         didSet {
         // Update the view, if already loaded.
         }
+    }
+    
+    func infoAbout(url: URL) -> String {
+        let fileManager = FileManager.default
+        
+        do {
+            let attributes = try fileManager.attributesOfItem(atPath: url.path)
+            var report: [String] = ["\(url.path)", ""]
+            
+            for (key, value) in attributes {
+                // ignore NSFileExtendedAttributes as it is a messy dictionary
+                if key.rawValue == "NSFileExtendedAttributes" { continue }
+                report.append("\(key.rawValue):\t \(value)")
+            }
+            return report.joined(separator: "\n")
+        } catch {
+            return "No information available for \(url.path)"
+        }
+    }
+    
+    func formatInfoText(_ text: String) -> NSAttributedString {
+        let paragraphStyle = NSMutableParagraphStyle.default().mutableCopy() as? NSMutableParagraphStyle
+        paragraphStyle?.minimumLineHeight = 24
+        paragraphStyle?.alignment = .left
+        paragraphStyle?.tabStops = [ NSTextTab(type: .leftTabStopType, location: 240) ]
+        
+        let textAttributes: [String: Any] = [
+            NSFontAttributeName: NSFont.systemFont(ofSize: 14),
+            NSParagraphStyleAttributeName: paragraphStyle ?? NSParagraphStyle.default()
+        ]
+        
+        let formattedText = NSAttributedString(string: text, attributes: textAttributes)
+        return formattedText
     }
 
     
@@ -87,6 +144,15 @@ extension ViewController: NSTableViewDelegate,NSTableViewDataSource{
         }
         
         return nil
+    }
+    
+    func tableViewSelectionDidChange(_ notification: Notification) {
+        if tableview.selectedRow < 0 {
+            selectedItem = nil
+            return
+        }
+        
+        selectedItem = filesList[tableview.selectedRow]
     }
     
     
