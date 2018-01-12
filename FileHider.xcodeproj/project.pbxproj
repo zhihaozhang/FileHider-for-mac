@@ -11,7 +11,9 @@
 		CE16CA0C2007157300F680B1 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE16CA0B2007157300F680B1 /* ViewController.swift */; };
 		CE16CA0E2007157300F680B1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CE16CA0D2007157300F680B1 /* Assets.xcassets */; };
 		CE16CA112007157300F680B1 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CE16CA0F2007157300F680B1 /* Main.storyboard */; };
-		CE16CA19200716A300F680B1 /* mainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE16CA18200716A300F680B1 /* mainViewController.swift */; };
+		CE16CA1B2008E0D500F680B1 /* fileCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE16CA1A2008E0D500F680B1 /* fileCellView.swift */; };
+		CE16CA1D2008E62900F680B1 /* windowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE16CA1C2008E62900F680B1 /* windowController.swift */; };
+		CE16CA1F2008E77200F680B1 /* myNSSplitView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE16CA1E2008E77200F680B1 /* myNSSplitView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -21,7 +23,9 @@
 		CE16CA0D2007157300F680B1 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		CE16CA102007157300F680B1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		CE16CA122007157300F680B1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		CE16CA18200716A300F680B1 /* mainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = mainViewController.swift; sourceTree = "<group>"; };
+		CE16CA1A2008E0D500F680B1 /* fileCellView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = fileCellView.swift; sourceTree = "<group>"; };
+		CE16CA1C2008E62900F680B1 /* windowController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = windowController.swift; sourceTree = "<group>"; };
+		CE16CA1E2008E77200F680B1 /* myNSSplitView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = myNSSplitView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -59,7 +63,9 @@
 				CE16CA0D2007157300F680B1 /* Assets.xcassets */,
 				CE16CA0F2007157300F680B1 /* Main.storyboard */,
 				CE16CA122007157300F680B1 /* Info.plist */,
-				CE16CA18200716A300F680B1 /* mainViewController.swift */,
+				CE16CA1A2008E0D500F680B1 /* fileCellView.swift */,
+				CE16CA1C2008E62900F680B1 /* windowController.swift */,
+				CE16CA1E2008E77200F680B1 /* myNSSplitView.swift */,
 			);
 			path = FileHider;
 			sourceTree = "<group>";
@@ -136,9 +142,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CE16CA1B2008E0D500F680B1 /* fileCellView.swift in Sources */,
+				CE16CA1D2008E62900F680B1 /* windowController.swift in Sources */,
 				CE16CA0C2007157300F680B1 /* ViewController.swift in Sources */,
 				CE16CA0A2007157300F680B1 /* AppDelegate.swift in Sources */,
-				CE16CA19200716A300F680B1 /* mainViewController.swift in Sources */,
+				CE16CA1F2008E77200F680B1 /* myNSSplitView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -295,6 +303,7 @@
 				CE16CA172007157300F680B1 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
