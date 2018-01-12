@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="12118" systemVersion="17C88" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="B8D-0N-5wS">
+<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="B8D-0N-5wS">
     <dependencies>
-        <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="12118"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="13771"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -664,11 +663,14 @@
         <scene sceneID="R2V-B0-nI4">
             <objects>
                 <windowController id="B8D-0N-5wS" customClass="windowController" customModule="FileHider" customModuleProvider="target" sceneMemberID="viewController">
-                    <window key="window" title="Window" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" oneShot="NO" releasedWhenClosed="NO" showsToolbarButton="NO" visibleAtLaunch="NO" animationBehavior="default" id="IQv-IB-iLA">
+                    <window key="window" title="FileHider" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" oneShot="NO" releasedWhenClosed="NO" showsToolbarButton="NO" visibleAtLaunch="NO" animationBehavior="default" id="IQv-IB-iLA">
                         <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
                         <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
                         <rect key="contentRect" x="196" y="240" width="560" height="480"/>
                         <rect key="screenRect" x="0.0" y="0.0" width="1680" height="1027"/>
+                        <connections>
+                            <outlet property="delegate" destination="B8D-0N-5wS" id="M8b-sD-J5B"/>
+                        </connections>
                     </window>
                     <connections>
                         <segue destination="6Me-C4-TeD" kind="relationship" relationship="window.shadowedContentViewController" id="VtF-oL-AlI"/>
@@ -687,20 +689,20 @@
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
                             <splitView arrangesAllSubviews="NO" dividerStyle="thin" vertical="YES" translatesAutoresizingMaskIntoConstraints="NO" id="neS-SS-aT1" customClass="myNSSplitView" customModule="FileHider">
-                                <rect key="frame" x="0.0" y="0.0" width="560" height="460"/>
+                                <rect key="frame" x="0.0" y="0.0" width="560" height="480"/>
                                 <subviews>
                                     <customView id="p4N-L7-qwb">
-                                        <rect key="frame" x="0.0" y="0.0" width="278" height="460"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="278" height="480"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <subviews>
-                                            <scrollView autohidesScrollers="YES" horizontalLineScroll="24" horizontalPageScroll="10" verticalLineScroll="24" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="din-oT-Ntv">
-                                                <rect key="frame" x="0.0" y="30" width="278" height="430"/>
+                                            <scrollView autohidesScrollers="YES" horizontalLineScroll="32" horizontalPageScroll="10" verticalLineScroll="32" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="din-oT-Ntv">
+                                                <rect key="frame" x="0.0" y="30" width="278" height="450"/>
                                                 <clipView key="contentView" id="LvG-WE-515">
-                                                    <rect key="frame" x="1" y="1" width="276" height="428"/>
+                                                    <rect key="frame" x="1" y="1" width="276" height="448"/>
                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                     <subviews>
-                                                        <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" alternatingRowBackgroundColors="YES" columnReordering="NO" columnSelection="YES" columnResizing="NO" multipleSelection="NO" autosaveColumns="NO" rowHeight="22" viewBased="YES" id="JJC-nt-1Tx">
-                                                            <rect key="frame" x="0.0" y="0.0" width="276" height="428"/>
+                                                        <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" alternatingRowBackgroundColors="YES" columnReordering="NO" columnSelection="YES" columnResizing="NO" multipleSelection="NO" autosaveColumns="NO" rowHeight="30" viewBased="YES" id="JJC-nt-1Tx">
+                                                            <rect key="frame" x="0.0" y="0.0" width="276" height="448"/>
                                                             <autoresizingMask key="autoresizingMask"/>
                                                             <size key="intercellSpacing" width="3" height="2"/>
                                                             <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
@@ -723,8 +725,8 @@
                                                                             <rect key="frame" x="1" y="1" width="273" height="30"/>
                                                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                                             <subviews>
-                                                                                <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" allowsCharacterPickerTouchBarItem="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CBh-Lf-0RQ">
-                                                                                    <rect key="frame" x="78" y="6" width="194" height="20"/>
+                                                                                <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="CBh-Lf-0RQ">
+                                                                                    <rect key="frame" x="78" y="1" width="194" height="20"/>
                                                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                                                                     <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" title="Table View Cell" id="A3c-hp-riJ">
                                                                                         <font key="font" metaFont="system"/>
@@ -755,7 +757,7 @@
                                                     </subviews>
                                                 </clipView>
                                                 <scroller key="horizontalScroller" hidden="YES" verticalHuggingPriority="750" horizontal="YES" id="eh7-ss-5Pi">
-                                                    <rect key="frame" x="1" y="116.29894554615021" width="234.24594879150391" height="16"/>
+                                                    <rect key="frame" x="1" y="116" width="234.24594879150391" height="16"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                 </scroller>
                                                 <scroller key="verticalScroller" hidden="YES" verticalHuggingPriority="750" horizontal="NO" id="wMR-U6-xxI">
@@ -784,7 +786,7 @@
                                         </constraints>
                                     </customView>
                                     <customView fixedFrame="YES" id="tHl-6I-DDW">
-                                        <rect key="frame" x="279" y="0.0" width="281" height="460"/>
+                                        <rect key="frame" x="279" y="0.0" width="281" height="480"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                     </customView>
                                 </subviews>
@@ -796,7 +798,7 @@
                         </subviews>
                         <constraints>
                             <constraint firstAttribute="bottom" secondItem="neS-SS-aT1" secondAttribute="bottom" id="Ywo-IE-A4h"/>
-                            <constraint firstItem="neS-SS-aT1" firstAttribute="top" secondItem="ONV-rF-agR" secondAttribute="top" constant="20" id="pq0-O5-vxj"/>
+                            <constraint firstItem="neS-SS-aT1" firstAttribute="top" secondItem="ONV-rF-agR" secondAttribute="top" id="pq0-O5-vxj"/>
                             <constraint firstAttribute="trailing" secondItem="neS-SS-aT1" secondAttribute="trailing" id="wCg-hP-Hot"/>
                             <constraint firstItem="neS-SS-aT1" firstAttribute="leading" secondItem="ONV-rF-agR" secondAttribute="leading" id="wbz-oo-c8c"/>
                         </constraints>
