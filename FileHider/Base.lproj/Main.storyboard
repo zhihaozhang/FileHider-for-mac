@@ -831,6 +831,17 @@
                                                     <autoresizingMask key="autoresizingMask"/>
                                                 </scroller>
                                             </scrollView>
+                                            <segmentedControl verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Tq2-PO-qK0">
+                                                <rect key="frame" x="336" y="12" width="121" height="24"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                                <segmentedCell key="cell" borderStyle="border" alignment="left" style="rounded" trackingMode="selectOne" id="h8O-QN-bMw">
+                                                    <font key="font" metaFont="system"/>
+                                                    <segments>
+                                                        <segment label="可见"/>
+                                                        <segment label="不可见" selected="YES" tag="1"/>
+                                                    </segments>
+                                                </segmentedCell>
+                                            </segmentedControl>
                                         </subviews>
                                         <constraints>
                                             <constraint firstAttribute="trailing" secondItem="pKl-Zx-dfw" secondAttribute="trailing" id="4bh-Kn-D8r"/>
