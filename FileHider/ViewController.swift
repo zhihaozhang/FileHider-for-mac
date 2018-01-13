@@ -54,11 +54,35 @@ class ViewController: NSViewController {
     }
     
     @IBAction func onOffToggle(_ sender: Any) {
-        if (sender as AnyObject).selectedSegment == 1{
-            print("hide")
-        }else{
-            print("show")
+        var path: String = ""
+        
+        if let len = selectedItem?.pathComponents.count{
+            for i in 1...len-2{
+                path += "/" + (selectedItem?.pathComponents[i])!
+            }
         }
+        print(path)
+        
+        
+        let task = Process()
+        
+        task.launchPath = "/bin/mv"
+        
+        if (sender as AnyObject).selectedSegment == 1{
+            print(path + "/" + (selectedItem?.lastPathComponent)!)
+            print(path + "/" + "."+(selectedItem?.lastPathComponent)!)
+            task.arguments = [path + "/" + (selectedItem?.lastPathComponent)!,path + "/" + "."+(selectedItem?.lastPathComponent)!]
+            
+        }else{
+            task.arguments = [path + "/" + "."+(selectedItem?.lastPathComponent)!,path + "/" + (selectedItem?.lastPathComponent)!]
+        }
+    
+        task.launch()
+        task.waitUntilExit()
+        
+        
+        
+        
     }
     
     @IBAction func selectFile(_ sender: Any) {
