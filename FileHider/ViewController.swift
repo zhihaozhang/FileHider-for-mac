@@ -12,6 +12,9 @@ class ViewController: NSViewController {
 
     @IBOutlet weak var tableview: NSTableView!
     @IBOutlet var infoTextView: NSTextView!
+    @IBOutlet var fileName: NSTextField!
+    
+    @IBOutlet var toggleButton: NSSegmentedControl!
     
     @IBOutlet var fileImage: NSImageView!
     
@@ -50,6 +53,13 @@ class ViewController: NSViewController {
         
     }
     
+    @IBAction func onOffToggle(_ sender: Any) {
+        if (sender as AnyObject).selectedSegment == 1{
+            print("hide")
+        }else{
+            print("show")
+        }
+    }
     
     @IBAction func selectFile(_ sender: Any) {
         
@@ -73,6 +83,7 @@ class ViewController: NSViewController {
         view.wantsLayer = true
         self.view.layer?.backgroundColor=NSColor.white.cgColor
 
+        toggleButton.isHidden = true
 
         // Do any additional setup after loading the view.
     }
@@ -153,6 +164,10 @@ extension ViewController: NSTableViewDelegate,NSTableViewDataSource{
         }
         
         selectedItem = filesList[tableview.selectedRow]
+        
+        fileName.stringValue = (selectedItem?.lastPathComponent)!
+        
+        toggleButton.isHidden = false
     }
     
     

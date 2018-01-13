@@ -831,24 +831,38 @@
                                                     <autoresizingMask key="autoresizingMask"/>
                                                 </scroller>
                                             </scrollView>
-                                            <segmentedControl verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Tq2-PO-qK0">
-                                                <rect key="frame" x="336" y="12" width="121" height="24"/>
-                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                                <segmentedCell key="cell" borderStyle="border" alignment="left" style="rounded" trackingMode="selectOne" id="h8O-QN-bMw">
+                                            <segmentedControl verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Tq2-PO-qK0">
+                                                <rect key="frame" x="314" y="19" width="122" height="23"/>
+                                                <segmentedCell key="cell" borderStyle="border" alignment="left" style="capsule" trackingMode="selectOne" id="h8O-QN-bMw">
                                                     <font key="font" metaFont="system"/>
                                                     <segments>
-                                                        <segment label="可见"/>
-                                                        <segment label="不可见" selected="YES" tag="1"/>
+                                                        <segment label="可见" selected="YES"/>
+                                                        <segment label="不可见" tag="1"/>
                                                     </segments>
+                                                    <connections>
+                                                        <action selector="onOffToggle:" target="6Me-C4-TeD" id="7OW-y5-cVd"/>
+                                                    </connections>
                                                 </segmentedCell>
                                             </segmentedControl>
+                                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="CM4-mV-Wjf">
+                                                <rect key="frame" x="224" y="438" width="8" height="17"/>
+                                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" id="TRW-3a-ecS">
+                                                    <font key="font" metaFont="system"/>
+                                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                                </textFieldCell>
+                                            </textField>
                                         </subviews>
                                         <constraints>
                                             <constraint firstAttribute="trailing" secondItem="pKl-Zx-dfw" secondAttribute="trailing" id="4bh-Kn-D8r"/>
+                                            <constraint firstItem="CM4-mV-Wjf" firstAttribute="centerX" secondItem="tHl-6I-DDW" secondAttribute="centerX" id="HTv-CZ-O1i"/>
                                             <constraint firstItem="nCZ-F9-KJb" firstAttribute="centerX" secondItem="tHl-6I-DDW" secondAttribute="centerX" id="KA2-sA-W52"/>
                                             <constraint firstItem="pKl-Zx-dfw" firstAttribute="top" secondItem="nCZ-F9-KJb" secondAttribute="bottom" constant="41" id="KGA-kY-7Jg"/>
+                                            <constraint firstItem="CM4-mV-Wjf" firstAttribute="top" secondItem="nCZ-F9-KJb" secondAttribute="bottom" constant="5" id="LD9-sN-SDP"/>
                                             <constraint firstItem="pKl-Zx-dfw" firstAttribute="leading" secondItem="tHl-6I-DDW" secondAttribute="leading" id="ZQD-b0-3Jh"/>
                                             <constraint firstItem="nCZ-F9-KJb" firstAttribute="top" secondItem="tHl-6I-DDW" secondAttribute="top" constant="20" symbolic="YES" id="bEO-DC-l44"/>
+                                            <constraint firstAttribute="trailing" secondItem="Tq2-PO-qK0" secondAttribute="trailing" constant="20" id="e63-k0-4fd"/>
+                                            <constraint firstAttribute="bottom" secondItem="Tq2-PO-qK0" secondAttribute="bottom" constant="20" id="eAS-mb-kC4"/>
                                             <constraint firstAttribute="bottom" secondItem="pKl-Zx-dfw" secondAttribute="bottom" constant="50" id="nE0-t9-SYT"/>
                                         </constraints>
                                     </customView>
@@ -868,9 +882,11 @@
                     </view>
                     <connections>
                         <outlet property="fileImage" destination="nCZ-F9-KJb" id="Brx-0F-3dU"/>
+                        <outlet property="fileName" destination="CM4-mV-Wjf" id="lLR-nD-kuz"/>
                         <outlet property="infoTextView" destination="cW0-ih-xMg" id="V7R-Uf-tu8"/>
                         <outlet property="splitView" destination="neS-SS-aT1" id="dKb-yx-BWJ"/>
                         <outlet property="tableview" destination="JJC-nt-1Tx" id="mEV-nl-Uu7"/>
+                        <outlet property="toggleButton" destination="Tq2-PO-qK0" id="KeY-fl-bG9"/>
                     </connections>
                 </viewController>
                 <customObject id="O7M-zm-o8d" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
