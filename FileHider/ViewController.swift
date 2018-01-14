@@ -18,6 +18,7 @@ class ViewController: NSViewController {
     
     @IBOutlet var fileImage: NSImageView!
     
+    
     var filesList : [URL] = []
     var selectedItem : URL? {
         didSet {
@@ -47,7 +48,6 @@ class ViewController: NSViewController {
                 filesList.append(selectedFolder)
                 self.tableview.reloadData()
                 self.tableview.scrollRowToVisible(0)
-                print(self.filesList)
             }
         }
         
@@ -80,9 +80,6 @@ class ViewController: NSViewController {
         task.launch()
         task.waitUntilExit()
         
-        
-        
-        
     }
     
     @IBAction func selectFile(_ sender: Any) {
@@ -98,8 +95,6 @@ class ViewController: NSViewController {
                 self.selectedFolder = openPanel.url!
             }
         })
-        
-
     }
     
     override func viewDidLoad() {
@@ -108,8 +103,26 @@ class ViewController: NSViewController {
         self.view.layer?.backgroundColor=NSColor.white.cgColor
 
         toggleButton.isHidden = true
+        
+        let defaults = UserDefaults.standard
+        if let filesListFromUserDefaults = defaults.array(forKey: "filesPath"){
+            var tmpFilePath : [String] = filesListFromUserDefaults as! [String]
+            for str in tmpFilePath{
+                self.filesList.append(URL(string: str)!)
+            }
+            print(filesListFromUserDefaults)
+        }
 
         // Do any additional setup after loading the view.
+    }
+    
+    override func viewWillDisappear() {
+        let defaults = UserDefaults.standard
+        var array : [String] = []
+        for url in filesList{
+            array.append(url.absoluteString)
+        }
+        defaults.set(array, forKey: "filesPath")
     }
 
     override var representedObject: Any? {
