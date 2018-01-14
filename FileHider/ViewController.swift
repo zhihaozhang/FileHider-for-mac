@@ -61,7 +61,6 @@ class ViewController: NSViewController {
                 path += "/" + (selectedItem?.pathComponents[i])!
             }
         }
-        print(path)
         
         
         let task = Process()
@@ -69,12 +68,64 @@ class ViewController: NSViewController {
         task.launchPath = "/bin/mv"
         
         if (sender as AnyObject).selectedSegment == 1{
-            print(path + "/" + (selectedItem?.lastPathComponent)!)
-            print(path + "/" + "."+(selectedItem?.lastPathComponent)!)
             task.arguments = [path + "/" + (selectedItem?.lastPathComponent)!,path + "/" + "."+(selectedItem?.lastPathComponent)!]
+            
+            for i in 0..<filesList.count {
+                if filesList[i].absoluteString == selectedItem?.absoluteString{
+                    
+                    var fileName = "file:"
+                        var fileNameArray = filesList[i].absoluteString.components(separatedBy: "/")
+                        
+                        for i in 1..<fileNameArray.count - 2{
+                            fileName += "/"+fileNameArray[i]
+                        }
+                    
+                    if fileNameArray[fileNameArray.count - 1] == ""{
+                        fileName += "/." + fileNameArray[fileNameArray.count - 2]
+                    }else{
+                        fileName += "/" + fileNameArray[fileNameArray.count - 2] + "/." + fileNameArray[fileNameArray.count - 1]
+                    }
+                    
+                        filesList[i] = URL(string:fileName)!
+                    }
+            }
             
         }else{
             task.arguments = [path + "/" + "."+(selectedItem?.lastPathComponent)!,path + "/" + (selectedItem?.lastPathComponent)!]
+            
+            print(selectedItem)
+            
+            for i in 0..<filesList.count {
+                if filesList[i].absoluteString == selectedItem?.absoluteString{
+                    
+                    var fileName = "file:"
+                    var fileNameArray = filesList[i].absoluteString.components(separatedBy: "/")
+                    print(fileNameArray)
+                    for i in 1..<fileNameArray.count - 2{
+                        fileName += "/"+fileNameArray[i]
+                    }
+                    
+                    if fileNameArray[fileNameArray.count - 1] == ""{
+                        let hiddenfileName = fileNameArray[fileNameArray.count - 2]
+                        let start = hiddenfileName.index(hiddenfileName.startIndex, offsetBy: 1)
+                        let unhiddenFileName : String? = hiddenfileName.substring(from: start)
+                        
+                        print(unhiddenFileName! + "aaa")
+                        
+                        fileName += "/" + unhiddenFileName!
+                    }else{
+                        
+                        let hiddenfileName = fileNameArray[fileNameArray.count - 1]
+                        let start = hiddenfileName.index(hiddenfileName.startIndex, offsetBy: 1)
+                        let unhiddenFileName : String? = hiddenfileName.substring(from: start)
+                        
+                        print(unhiddenFileName! + "bbb")
+                        
+                        fileName += "/" + fileNameArray[fileNameArray.count - 2] + "/" + unhiddenFileName!
+                    }
+                    filesList[i] = URL(string:fileName)!
+                }
+            }
         }
     
         task.launch()
@@ -110,7 +161,6 @@ class ViewController: NSViewController {
             for str in tmpFilePath{
                 self.filesList.append(URL(string: str)!)
             }
-            print(filesListFromUserDefaults)
         }
 
         // Do any additional setup after loading the view.
@@ -163,8 +213,6 @@ class ViewController: NSViewController {
         let formattedText = NSAttributedString(string: text, attributes: textAttributes)
         return formattedText
     }
-
-    
 }
 
 
