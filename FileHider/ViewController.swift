@@ -93,11 +93,21 @@ class ViewController: NSViewController {
         }else{
             task.arguments = [path + "/" + "."+(selectedItem?.lastPathComponent)!,path + "/" + (selectedItem?.lastPathComponent)!]
             
-            print(selectedItem)
+            var fileNameOfSelectedItem = "file:"
+            var fileNameOfSelectedItemArray = (selectedItem?.absoluteString.components(separatedBy: "/"))
             
+            for i in 1..<(fileNameOfSelectedItemArray?.count)! - 2{
+                fileNameOfSelectedItem += "/"+fileNameOfSelectedItemArray![i]
+            }
+        
+            if fileNameOfSelectedItemArray![(fileNameOfSelectedItemArray?.count)! - 1] == ""{
+                fileNameOfSelectedItem += "/." + fileNameOfSelectedItemArray![(fileNameOfSelectedItemArray?.count)! - 2]
+            }else{
+                fileNameOfSelectedItem += "/." + fileNameOfSelectedItemArray![(fileNameOfSelectedItemArray?.count)! - 1]
+            }
+        
             for i in 0..<filesList.count {
-                if filesList[i].absoluteString == selectedItem?.absoluteString{
-                    
+                if filesList[i].absoluteString == fileNameOfSelectedItem{
                     var fileName = "file:"
                     var fileNameArray = filesList[i].absoluteString.components(separatedBy: "/")
                     print(fileNameArray)
@@ -109,17 +119,13 @@ class ViewController: NSViewController {
                         let hiddenfileName = fileNameArray[fileNameArray.count - 2]
                         let start = hiddenfileName.index(hiddenfileName.startIndex, offsetBy: 1)
                         let unhiddenFileName : String? = hiddenfileName.substring(from: start)
-                        
-                        print(unhiddenFileName! + "aaa")
-                        
+                
                         fileName += "/" + unhiddenFileName!
                     }else{
                         
                         let hiddenfileName = fileNameArray[fileNameArray.count - 1]
                         let start = hiddenfileName.index(hiddenfileName.startIndex, offsetBy: 1)
                         let unhiddenFileName : String? = hiddenfileName.substring(from: start)
-                        
-                        print(unhiddenFileName! + "bbb")
                         
                         fileName += "/" + fileNameArray[fileNameArray.count - 2] + "/" + unhiddenFileName!
                     }
