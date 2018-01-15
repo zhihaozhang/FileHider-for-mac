@@ -258,6 +258,12 @@ extension ViewController: NSTableViewDelegate,NSTableViewDataSource{
         fileName.stringValue = (selectedItem?.lastPathComponent)!
         
         toggleButton.isHidden = false
+        
+        if(fileName.stringValue.hasPrefix(".")){
+            toggleButton.selectedSegment = 1
+        }else{
+            toggleButton.selectedSegment = 0
+        }
     }
     
     
