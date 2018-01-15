@@ -103,14 +103,13 @@ class ViewController: NSViewController {
             if fileNameOfSelectedItemArray![(fileNameOfSelectedItemArray?.count)! - 1] == ""{
                 fileNameOfSelectedItem += "/." + fileNameOfSelectedItemArray![(fileNameOfSelectedItemArray?.count)! - 2]
             }else{
-                fileNameOfSelectedItem += "/." + fileNameOfSelectedItemArray![(fileNameOfSelectedItemArray?.count)! - 1]
+                fileNameOfSelectedItem += "/" + fileNameOfSelectedItemArray![(fileNameOfSelectedItemArray?.count)! - 2] + "/." + fileNameOfSelectedItemArray![(fileNameOfSelectedItemArray?.count)! - 1]
             }
         
             for i in 0..<filesList.count {
                 if filesList[i].absoluteString == fileNameOfSelectedItem{
                     var fileName = "file:"
                     var fileNameArray = filesList[i].absoluteString.components(separatedBy: "/")
-                    print(fileNameArray)
                     for i in 1..<fileNameArray.count - 2{
                         fileName += "/"+fileNameArray[i]
                     }
@@ -162,7 +161,7 @@ class ViewController: NSViewController {
         toggleButton.isHidden = true
         
         let defaults = UserDefaults.standard
-        if let filesListFromUserDefaults = defaults.array(forKey: "filesPath"){
+        if let filesListFromUserDefaults = defaults.array(forKey: "filesPath1"){
             var tmpFilePath : [String] = filesListFromUserDefaults as! [String]
             for str in tmpFilePath{
                 self.filesList.append(URL(string: str)!)
@@ -178,7 +177,7 @@ class ViewController: NSViewController {
         for url in filesList{
             array.append(url.absoluteString)
         }
-        defaults.set(array, forKey: "filesPath")
+        defaults.set(array, forKey: "filesPath1")
     }
 
     override var representedObject: Any? {
