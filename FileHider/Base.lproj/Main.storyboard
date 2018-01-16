@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="B8D-0N-5wS">
+<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="12118" systemVersion="17C88" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="B8D-0N-5wS">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="13771"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="12118"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -725,7 +725,7 @@
                                                                             <rect key="frame" x="1" y="1" width="298" height="30"/>
                                                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                                             <subviews>
-                                                                                <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="CBh-Lf-0RQ">
+                                                                                <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" allowsCharacterPickerTouchBarItem="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CBh-Lf-0RQ">
                                                                                     <rect key="frame" x="78" y="1" width="219" height="20"/>
                                                                                     <constraints>
                                                                                         <constraint firstAttribute="height" constant="20" id="y2j-UL-YLu"/>
@@ -787,11 +787,23 @@
                                                     <action selector="selectFile:" target="6Me-C4-TeD" id="EJo-Br-lej"/>
                                                 </connections>
                                             </button>
+                                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="hxC-Dp-piF">
+                                                <rect key="frame" x="242" y="4" width="51" height="19"/>
+                                                <buttonCell key="cell" type="roundRect" title="Delete" bezelStyle="roundedRect" alignment="center" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="9Y8-tW-IQz">
+                                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                                    <font key="font" metaFont="cellTitle"/>
+                                                </buttonCell>
+                                                <connections>
+                                                    <action selector="deleteRow:" target="6Me-C4-TeD" id="qwf-De-2OG"/>
+                                                </connections>
+                                            </button>
                                         </subviews>
                                         <constraints>
                                             <constraint firstAttribute="trailing" secondItem="din-oT-Ntv" secondAttribute="trailing" id="B4p-6W-50k"/>
+                                            <constraint firstAttribute="trailing" secondItem="hxC-Dp-piF" secondAttribute="trailing" constant="10" id="DiV-M2-gXH"/>
                                             <constraint firstAttribute="bottom" secondItem="din-oT-Ntv" secondAttribute="bottom" constant="30" id="GyW-Ry-Cgt"/>
                                             <constraint firstItem="din-oT-Ntv" firstAttribute="leading" secondItem="p4N-L7-qwb" secondAttribute="leading" id="S1O-Rj-GwY"/>
+                                            <constraint firstAttribute="bottom" secondItem="hxC-Dp-piF" secondAttribute="bottom" constant="5" id="UMS-UG-Pyn"/>
                                             <constraint firstItem="din-oT-Ntv" firstAttribute="top" secondItem="p4N-L7-qwb" secondAttribute="top" id="VTa-a0-92w"/>
                                             <constraint firstAttribute="bottom" secondItem="82B-mq-KPq" secondAttribute="bottom" constant="5" id="XeW-bV-Dwf"/>
                                             <constraint firstItem="82B-mq-KPq" firstAttribute="leading" secondItem="p4N-L7-qwb" secondAttribute="leading" constant="10" id="ktm-o0-hMv"/>
@@ -811,7 +823,7 @@
                                                     <rect key="frame" x="0.0" y="0.0" width="456" height="369"/>
                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                     <subviews>
-                                                        <textView importsGraphics="NO" verticallyResizable="YES" usesFontPanel="YES" findStyle="panel" continuousSpellChecking="YES" allowsUndo="YES" usesRuler="YES" allowsNonContiguousLayout="YES" quoteSubstitution="YES" dashSubstitution="YES" spellingCorrection="YES" smartInsertDelete="YES" id="cW0-ih-xMg">
+                                                        <textView importsGraphics="NO" usesFontPanel="YES" findStyle="panel" continuousSpellChecking="YES" allowsUndo="YES" usesRuler="YES" allowsNonContiguousLayout="YES" quoteSubstitution="YES" dashSubstitution="YES" spellingCorrection="YES" smartInsertDelete="YES" id="cW0-ih-xMg">
                                                             <rect key="frame" x="0.0" y="0.0" width="456" height="369"/>
                                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -844,7 +856,7 @@
                                                     </connections>
                                                 </segmentedCell>
                                             </segmentedControl>
-                                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="CM4-mV-Wjf">
+                                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CM4-mV-Wjf">
                                                 <rect key="frame" x="224" y="438" width="8" height="17"/>
                                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" id="TRW-3a-ecS">
                                                     <font key="font" metaFont="system"/>

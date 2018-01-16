@@ -20,6 +20,21 @@ class ViewController: NSViewController {
     
     
     var filesList : [URL] = []
+    
+    @IBAction func deleteRow(_ sender: Any) {
+        if tableview.selectedRow >= 0 {
+            filesList.remove(at: tableview.selectedRow)
+            tableview.reloadData()
+            
+            infoTextView.string = ""
+            fileImage.image = nil
+            fileName.stringValue = ""
+            toggleButton.isHidden = true
+        }
+       
+    }
+    
+    
     var selectedItem : URL? {
         didSet {
             guard let selectedUrl = selectedItem else {
