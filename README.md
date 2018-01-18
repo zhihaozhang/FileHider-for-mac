@@ -19,6 +19,6 @@ Specially thanks to ~~un~~famous Designer **Joseph**, who designed the exquisite
 
 ![](https://ws1.sinaimg.cn/large/aa2320a8ly1fnhgwuj4h0j208y08wgls)
 
-Thanks To **Secret Folder**! 感谢您定价过高，以致于让我有了动力做一个替代品。
+Thanks To **Secret Folder**! 感谢给了我做FileHider所带来的启发和动力。
 
 ![](https://ws1.sinaimg.cn/large/aa2320a8ly1fnhba8qhjfj20tz13pq71)
