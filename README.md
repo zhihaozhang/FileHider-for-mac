@@ -5,9 +5,15 @@
 
 **对实现细节感兴趣的朋友可以参考[我的博客](http://zhihaozhang.github.io/2018/01/16/FileHider/)**，欢迎fork项目，并贡献您的code。
 
+
 软件demo url: https://ws1.sinaimg.cn/large/aa2320a8ly1fnhbezm45wg20hs0dc7q5
 
 ![](https://ws1.sinaimg.cn/large/aa2320a8ly1fnhbezm45wg20hs0dc7q5)
+
+==========2018-1-22更新==========
+Now you just need drag & drop, it's that easy!
+
+![](https://ws1.sinaimg.cn/large/aa2320a8ly1fnpohtbv10g21ls1ukb1l)
 
 # License
 
