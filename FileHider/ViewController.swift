@@ -10,6 +10,7 @@ import Cocoa
 
 class ViewController: NSViewController {
 
+    @IBOutlet weak var dragView: DragDestinationView!
     @IBOutlet weak var tableview: NSTableView!
     @IBOutlet var infoTextView: NSTextView!
     @IBOutlet var fileName: NSTextField!
@@ -214,8 +215,6 @@ class ViewController: NSViewController {
         }
         
         
-        
-        
         task.launch()
         task.waitUntilExit()
         
@@ -241,6 +240,8 @@ class ViewController: NSViewController {
         view.wantsLayer = true
         self.view.layer?.backgroundColor=NSColor.white.cgColor
 
+        self.dragView.delegate  = self as! FileDragDelegate
+        
         toggleButton.isHidden = true
         
         let defaults = UserDefaults.standard
@@ -350,5 +351,16 @@ extension ViewController: NSTableViewDelegate,NSTableViewDataSource{
     }
     
     
+}
+
+extension ViewController: FileDragDelegate {
+    func didFinishDrag(_ filePath:String) {
+        let url = NSURL(fileURLWithPath: filePath)
+        
+        filesList.append(url as URL)
+        print(url)
+        tableview.reloadData()
+        
+    }
 }
 

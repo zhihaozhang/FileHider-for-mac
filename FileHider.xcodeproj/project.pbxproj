@@ -14,6 +14,7 @@
 		CE16CA1B2008E0D500F680B1 /* fileCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE16CA1A2008E0D500F680B1 /* fileCellView.swift */; };
 		CE16CA1D2008E62900F680B1 /* windowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE16CA1C2008E62900F680B1 /* windowController.swift */; };
 		CE16CA1F2008E77200F680B1 /* myNSSplitView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE16CA1E2008E77200F680B1 /* myNSSplitView.swift */; };
+		CEDFACA0201605DE00592862 /* DragDestinationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEDFAC9F201605DE00592862 /* DragDestinationView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +27,7 @@
 		CE16CA1A2008E0D500F680B1 /* fileCellView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = fileCellView.swift; sourceTree = "<group>"; };
 		CE16CA1C2008E62900F680B1 /* windowController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = windowController.swift; sourceTree = "<group>"; };
 		CE16CA1E2008E77200F680B1 /* myNSSplitView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = myNSSplitView.swift; sourceTree = "<group>"; };
+		CEDFAC9F201605DE00592862 /* DragDestinationView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DragDestinationView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -66,6 +68,7 @@
 				CE16CA1A2008E0D500F680B1 /* fileCellView.swift */,
 				CE16CA1C2008E62900F680B1 /* windowController.swift */,
 				CE16CA1E2008E77200F680B1 /* myNSSplitView.swift */,
+				CEDFAC9F201605DE00592862 /* DragDestinationView.swift */,
 			);
 			path = FileHider;
 			sourceTree = "<group>";
@@ -143,6 +146,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				CE16CA1B2008E0D500F680B1 /* fileCellView.swift in Sources */,
+				CEDFACA0201605DE00592862 /* DragDestinationView.swift in Sources */,
 				CE16CA1D2008E62900F680B1 /* windowController.swift in Sources */,
 				CE16CA0C2007157300F680B1 /* ViewController.swift in Sources */,
 				CE16CA0A2007157300F680B1 /* AppDelegate.swift in Sources */,

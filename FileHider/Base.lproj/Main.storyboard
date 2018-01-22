@@ -691,7 +691,7 @@
                             <splitView arrangesAllSubviews="NO" dividerStyle="thin" vertical="YES" translatesAutoresizingMaskIntoConstraints="NO" id="neS-SS-aT1" customClass="myNSSplitView" customModule="FileHider">
                                 <rect key="frame" x="0.0" y="0.0" width="760" height="480"/>
                                 <subviews>
-                                    <customView id="p4N-L7-qwb">
+                                    <customView id="p4N-L7-qwb" customClass="DragDestinationView" customModule="FileHider" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="0.0" width="303" height="480"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <subviews>
@@ -788,10 +788,10 @@
                                                 </connections>
                                             </button>
                                             <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="hxC-Dp-piF">
-                                                <rect key="frame" x="242" y="4" width="51" height="19"/>
-                                                <buttonCell key="cell" type="roundRect" title="Delete" bezelStyle="roundedRect" alignment="center" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="9Y8-tW-IQz">
+                                                <rect key="frame" x="272" y="3" width="21" height="25"/>
+                                                <buttonCell key="cell" type="roundTextured" title="-" bezelStyle="texturedRounded" alignment="center" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="9Y8-tW-IQz">
                                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                                    <font key="font" metaFont="cellTitle"/>
+                                                    <font key="font" metaFont="system"/>
                                                 </buttonCell>
                                                 <connections>
                                                     <action selector="deleteRow:" target="6Me-C4-TeD" id="qwf-De-2OG"/>
@@ -893,6 +893,7 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="dragView" destination="p4N-L7-qwb" id="wE6-kt-iXc"/>
                         <outlet property="fileImage" destination="nCZ-F9-KJb" id="Brx-0F-3dU"/>
                         <outlet property="fileName" destination="CM4-mV-Wjf" id="lLR-nD-kuz"/>
                         <outlet property="infoTextView" destination="cW0-ih-xMg" id="V7R-Uf-tu8"/>
