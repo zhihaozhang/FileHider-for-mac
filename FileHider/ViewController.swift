@@ -126,7 +126,20 @@ class ViewController: NSViewController {
         openPanel.beginSheetModal(for: view.window!, completionHandler: {(result) in
             if result == NSModalResponseOK{
                 self.selectedFolder = openPanel.url!
-                self.saveBookmarks((self.selectedFolder?.absoluteString)!)
+                print("+++")
+                
+                var path: String = ""
+                
+                if let len = self.selectedFolder?.pathComponents.count{
+                    for i in 1...len-2{
+                        path += "/" + (self.selectedFolder?.pathComponents[i])!
+                    }
+                }
+                
+                print(path+(self.selectedFolder?.lastPathComponent)!)
+                
+                
+                self.saveBookmarks(path+"/"+(self.selectedFolder?.lastPathComponent)!)
             }
         })
     }
@@ -262,7 +275,19 @@ extension ViewController: NSTableViewDelegate,NSTableViewDataSource{
 extension ViewController: FileDragDelegate {
     func didFinishDrag(_ filePath:String) {
         let url = NSURL(fileURLWithPath: filePath)
-        saveBookmarks(filePath)
+        
+        print("---")
+        var path: String = ""
+        
+        if let len = url.pathComponents?.count{
+            for i in 1...len-2{
+                path += "/" + (url.pathComponents![i])
+            }
+        }
+        
+        print(path+"/"+(url.lastPathComponent)!)
+        
+        saveBookmarks(path+"/"+(url.lastPathComponent)!)
         filesList.append(url as URL)
         self.isHidden.append("false")
         tableview.reloadData()
@@ -270,17 +295,23 @@ extension ViewController: FileDragDelegate {
     }
     
     func saveBookmarks(_ filePath : String){
+        print("save=====")
+        
+        
         let userDefault = UserDefaults.standard
         let folderPath = NSURL(fileURLWithPath: filePath)
+        print(folderPath.absoluteString!)
         do {
             let bookmark = try folderPath.bookmarkData(options: .securityScopeAllowOnlyReadAccess, includingResourceValuesForKeys: nil, relativeTo: nil)
-            userDefault.set(bookmark, forKey:"file://" + filePath)
+            userDefault.set(bookmark, forKey: folderPath.absoluteString!)
         } catch let error as NSError {
             print("Set Bookmark Fails: \(error.description)")
         }
     }
     
     func readBookmarks(_ filePath : String){
+        print("read=====")
+        print(filePath)
         let userDefault = UserDefaults.standard
         if let bookmarkData = userDefault.object(forKey: filePath) as? NSData {
             do {
