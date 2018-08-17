@@ -19,12 +19,13 @@ class ViewController: NSViewController {
     
     @IBOutlet var fileImage: NSImageView!
     
-    
+    var isHidden : [String] = []
     var filesList : [URL] = []
     
     @IBAction func deleteRow(_ sender: Any) {
         if tableview.selectedRow >= 0 {
             filesList.remove(at: tableview.selectedRow)
+            self.isHidden.remove(at: tableview.selectedRow)
             tableview.reloadData()
             
             infoTextView.string = ""
@@ -62,6 +63,7 @@ class ViewController: NSViewController {
         didSet {
             if let selectedFolder = selectedFolder{
                 filesList.append(selectedFolder)
+                self.isHidden.append("false")
                 self.tableview.reloadData()
                 self.tableview.scrollRowToVisible(0)
             }
@@ -77,140 +79,36 @@ class ViewController: NSViewController {
                 path += "/" + (selectedItem?.pathComponents[i])!
             }
         }
+        print("====")
+        print(path + "/" + (selectedItem?.lastPathComponent)!)
+        print(filesList[0])
+        
+        var i = -1
+        for var index in 0..<filesList.count {
+            if(selectedItem! == filesList[index]){
+                i = index
+                break
+            }
+        }
+        
+        
         
         let task = Process()
         
-        task.launchPath = "/bin/mv"
+        task.launchPath = "/usr/bin/chflags"
         
         if (sender as AnyObject).selectedSegment == 1{   // hide
-            if((selectedItem?.lastPathComponent)!.hasPrefix(".")){
-                let start = (selectedItem?.lastPathComponent)!.index((selectedItem?.lastPathComponent)!.startIndex, offsetBy: 1);
-                let str1 = (selectedItem?.lastPathComponent)!.substring(from: start)
-                
-                task.arguments = [path + "/" + str1,path + "/" + (selectedItem?.lastPathComponent)!]
-                
-                for i in 0..<filesList.count {
-                    if filesList[i].absoluteString == selectedItem?.absoluteString{
-                        
-                        var fileName = "file:"
-                        var fileNameArray = filesList[i].absoluteString.components(separatedBy: "/")
-                        
-                        for i in 1..<fileNameArray.count - 2{
-                            fileName += "/"+fileNameArray[i]
-                        }
-                        
-                        if fileNameArray[fileNameArray.count - 1] == ""{
-                            fileName += "/" + fileNameArray[fileNameArray.count - 2]
-                        }else{
-                            fileName += "/" + fileNameArray[fileNameArray.count - 2] + "/" + fileNameArray[fileNameArray.count - 1]
-                        }
-                        
-                        filesList[i] = URL(string:fileName)!
-                    }
-                }
-            }else{
-                task.arguments = [path + "/" + (selectedItem?.lastPathComponent)!,path + "/" + "."+(selectedItem?.lastPathComponent)!]
-                
-                for i in 0..<filesList.count {
-                    if filesList[i].absoluteString == selectedItem?.absoluteString{
-                        
-                        var fileName = "file:"
-                        var fileNameArray = filesList[i].absoluteString.components(separatedBy: "/")
-                        
-                        for i in 1..<fileNameArray.count - 2{
-                            fileName += "/"+fileNameArray[i]
-                        }
-                        
-                        if fileNameArray[fileNameArray.count - 1] == ""{
-                            fileName += "/." + fileNameArray[fileNameArray.count - 2]
-                        }else{
-                            fileName += "/" + fileNameArray[fileNameArray.count - 2] + "/." + fileNameArray[fileNameArray.count - 1]
-                        }
-                        
-                        filesList[i] = URL(string:fileName)!
-                    }
-                }
+            
+            task.arguments = ["hidden",path + "/" + (selectedItem?.lastPathComponent)!]
+            if(i != -1){
+                self.isHidden[i] = "true"
             }
+            
+            
         }else{ // unhide
-            var fileNameOfSelectedItem = "file:"
-            var fileNameOfSelectedItemArray = (selectedItem?.absoluteString.components(separatedBy: "/"))
-            
-            for i in 1..<(fileNameOfSelectedItemArray?.count)! - 2{
-                fileNameOfSelectedItem += "/"+fileNameOfSelectedItemArray![i]
-            }
-        
-            
-            
-            if((selectedItem?.lastPathComponent)!.hasPrefix(".")){
-                
-                if fileNameOfSelectedItemArray![(fileNameOfSelectedItemArray?.count)! - 1] == ""{
-                    fileNameOfSelectedItem += "/" + fileNameOfSelectedItemArray![(fileNameOfSelectedItemArray?.count)! - 2]
-                }else{
-                    fileNameOfSelectedItem += "/" + fileNameOfSelectedItemArray![(fileNameOfSelectedItemArray?.count)! - 2] + "/" + fileNameOfSelectedItemArray![(fileNameOfSelectedItemArray?.count)! - 1]
-                }
-                
-                let start = (selectedItem?.lastPathComponent)!.index((selectedItem?.lastPathComponent)!.startIndex, offsetBy: 1);
-                let str1 = (selectedItem?.lastPathComponent)!.substring(from: start)
-                
-                task.arguments = [path + "/" + (selectedItem?.lastPathComponent)!,path + "/" + str1]
-                
-                
-                for i in 0..<filesList.count {
-                    if filesList[i].absoluteString == fileNameOfSelectedItem{
-                        var fileName = "file:"
-                        var fileNameArray = filesList[i].absoluteString.components(separatedBy: "/")
-                        for i in 1..<fileNameArray.count - 2{
-                            fileName += "/"+fileNameArray[i]
-                        }
-                        
-                        if fileNameArray[fileNameArray.count - 1] == ""{
-                            let hiddenfileName = fileNameArray[fileNameArray.count - 2]
-                            let start = hiddenfileName.index(hiddenfileName.startIndex, offsetBy: 1)
-                            let unhiddenFileName : String? = hiddenfileName.substring(from: start)
-                            
-                            fileName += "/" + str1
-                        }else{
-                            let hiddenfileName = fileNameArray[fileNameArray.count - 1]
-                            let start = hiddenfileName.index(hiddenfileName.startIndex, offsetBy: 1)
-                            let unhiddenFileName : String? = hiddenfileName.substring(from: start)
-                            
-                            fileName += "/" + fileNameArray[fileNameArray.count - 2] + "/" + unhiddenFileName!
-                        }
-                        filesList[i] = URL(string:fileName)!
-                    }
-                }
-                
-                
-            }else{
-                if fileNameOfSelectedItemArray![(fileNameOfSelectedItemArray?.count)! - 1] == ""{
-                    fileNameOfSelectedItem += "/." + fileNameOfSelectedItemArray![(fileNameOfSelectedItemArray?.count)! - 2]
-                }else{
-                    fileNameOfSelectedItem += "/" + fileNameOfSelectedItemArray![(fileNameOfSelectedItemArray?.count)! - 2] + "/." + fileNameOfSelectedItemArray![(fileNameOfSelectedItemArray?.count)! - 1]
-                }
-                task.arguments = [path + "/" + "."+(selectedItem?.lastPathComponent)!,path + "/" + (selectedItem?.lastPathComponent)!]
-                
-                
-                for i in 0..<filesList.count {
-                    if filesList[i].absoluteString == fileNameOfSelectedItem{
-                        var fileName = "file:"
-                        var fileNameArray = filesList[i].absoluteString.components(separatedBy: "/")
-                        for i in 1..<fileNameArray.count - 2{
-                            fileName += "/"+fileNameArray[i]
-                        }
-                        
-                        if fileNameArray[fileNameArray.count - 1] == ""{
-                            let hiddenfileName = fileNameArray[fileNameArray.count - 2]
-                           
-                            fileName += "/" + hiddenfileName
-                        }else{
-                            
-                            let hiddenfileName = fileNameArray[fileNameArray.count - 1]
-                          
-                            fileName += "/" + fileNameArray[fileNameArray.count - 2] + "/" + hiddenfileName
-                        }
-                        filesList[i] = URL(string:fileName)!
-                    }
-                }
+            task.arguments = ["nohidden",path + "/" + (selectedItem?.lastPathComponent)!]
+            if(i != -1){
+                self.isHidden[i] = "false"
             }
         }
         
@@ -245,12 +143,21 @@ class ViewController: NSViewController {
         toggleButton.isHidden = true
         
         let defaults = UserDefaults.standard
-        if let filesListFromUserDefaults = defaults.array(forKey: "filesPath2"){
-            var tmpFilePath : [String] = filesListFromUserDefaults as! [String]
+        if let filesListFromUserDefaults = defaults.array(forKey: "filesPath"){
+            let tmpFilePath : [String] = filesListFromUserDefaults as! [String]
             for str in tmpFilePath{
                 self.filesList.append(URL(string: str)!)
             }
         }
+        
+        if let DictFromUserDefaults = defaults.array(forKey: "HiddenStatus"){
+            let tmpFilePath : [String] = DictFromUserDefaults as! [String]
+            for str in tmpFilePath{
+                self.isHidden.append(str)
+            }
+        }
+        
+        print(self.isHidden)
 
         // Do any additional setup after loading the view.
     }
@@ -261,7 +168,8 @@ class ViewController: NSViewController {
         for url in filesList{
             array.append(url.absoluteString)
         }
-        defaults.set(array, forKey: "filesPath2")
+        defaults.set(array, forKey: "filesPath")
+        defaults.set(self.isHidden,forKey:"HiddenStatus")
     }
 
     override var representedObject: Any? {
@@ -343,7 +251,7 @@ extension ViewController: NSTableViewDelegate,NSTableViewDataSource{
         
         toggleButton.isHidden = false
         
-        if(fileName.stringValue.hasPrefix(".")){
+        if(tableview.selectedRow < self.isHidden.count && self.isHidden[tableview.selectedRow] == "true"){
             toggleButton.selectedSegment = 1
         }else{
             toggleButton.selectedSegment = 0
@@ -358,6 +266,7 @@ extension ViewController: FileDragDelegate {
         let url = NSURL(fileURLWithPath: filePath)
         
         filesList.append(url as URL)
+        self.isHidden.append("false")
         print(url)
         tableview.reloadData()
         

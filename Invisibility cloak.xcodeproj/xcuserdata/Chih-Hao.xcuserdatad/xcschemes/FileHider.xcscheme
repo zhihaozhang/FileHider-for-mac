@@ -15,9 +15,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "CE16CA052007157300F680B1"
-               BuildableName = "FileHider.app"
-               BlueprintName = "FileHider"
-               ReferencedContainer = "container:FileHider.xcodeproj">
+               BuildableName = "Invisibility cloak.app"
+               BlueprintName = "Invisibility cloak"
+               ReferencedContainer = "container:Invisibility cloak.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -33,9 +33,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "CE16CA052007157300F680B1"
-            BuildableName = "FileHider.app"
-            BlueprintName = "FileHider"
-            ReferencedContainer = "container:FileHider.xcodeproj">
+            BuildableName = "Invisibility cloak.app"
+            BlueprintName = "Invisibility cloak"
+            ReferencedContainer = "container:Invisibility cloak.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
       <AdditionalOptions>
@@ -56,9 +56,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "CE16CA052007157300F680B1"
-            BuildableName = "FileHider.app"
-            BlueprintName = "FileHider"
-            ReferencedContainer = "container:FileHider.xcodeproj">
+            BuildableName = "Invisibility cloak.app"
+            BlueprintName = "Invisibility cloak"
+            ReferencedContainer = "container:Invisibility cloak.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
       <AdditionalOptions>
@@ -75,9 +75,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "CE16CA052007157300F680B1"
-            BuildableName = "FileHider.app"
-            BlueprintName = "FileHider"
-            ReferencedContainer = "container:FileHider.xcodeproj">
+            BuildableName = "Invisibility cloak.app"
+            BlueprintName = "Invisibility cloak"
+            ReferencedContainer = "container:Invisibility cloak.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>
