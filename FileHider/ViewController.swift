@@ -126,6 +126,7 @@ class ViewController: NSViewController {
         openPanel.beginSheetModal(for: view.window!, completionHandler: {(result) in
             if result == NSModalResponseOK{
                 self.selectedFolder = openPanel.url!
+                self.saveBookmarks((self.selectedFolder?.absoluteString)!)
             }
         })
     }
@@ -144,6 +145,7 @@ class ViewController: NSViewController {
             let tmpFilePath : [String] = filesListFromUserDefaults as! [String]
             for str in tmpFilePath{
                 self.filesList.append(URL(string: str)!)
+                self.readBookmarks(str)
             }
         }
         
@@ -260,11 +262,36 @@ extension ViewController: NSTableViewDelegate,NSTableViewDataSource{
 extension ViewController: FileDragDelegate {
     func didFinishDrag(_ filePath:String) {
         let url = NSURL(fileURLWithPath: filePath)
-        
+        saveBookmarks(filePath)
         filesList.append(url as URL)
         self.isHidden.append("false")
         tableview.reloadData()
         
     }
+    
+    func saveBookmarks(_ filePath : String){
+        let userDefault = UserDefaults.standard
+        let folderPath = NSURL(fileURLWithPath: filePath)
+        do {
+            let bookmark = try folderPath.bookmarkData(options: .securityScopeAllowOnlyReadAccess, includingResourceValuesForKeys: nil, relativeTo: nil)
+            userDefault.set(bookmark, forKey:"file://" + filePath)
+        } catch let error as NSError {
+            print("Set Bookmark Fails: \(error.description)")
+        }
+    }
+    
+    func readBookmarks(_ filePath : String){
+        let userDefault = UserDefaults.standard
+        if let bookmarkData = userDefault.object(forKey: filePath) as? NSData {
+            do {
+                let url = try NSURL.init(resolvingBookmarkData: bookmarkData as Data, options: .withoutUI, relativeTo: nil, bookmarkDataIsStale: nil)
+                url.startAccessingSecurityScopedResource()
+            } catch let error as NSError {
+                print("Bookmark Access Fails: \(error.description)")
+            }
+        }
+    }
+    
+    
 }
 
