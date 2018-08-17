@@ -79,9 +79,6 @@ class ViewController: NSViewController {
                 path += "/" + (selectedItem?.pathComponents[i])!
             }
         }
-        print("====")
-        print(path + "/" + (selectedItem?.lastPathComponent)!)
-        print(filesList[0])
         
         var i = -1
         for var index in 0..<filesList.count {
@@ -157,7 +154,6 @@ class ViewController: NSViewController {
             }
         }
         
-        print(self.isHidden)
 
         // Do any additional setup after loading the view.
     }
@@ -267,7 +263,6 @@ extension ViewController: FileDragDelegate {
         
         filesList.append(url as URL)
         self.isHidden.append("false")
-        print(url)
         tableview.reloadData()
         
     }
