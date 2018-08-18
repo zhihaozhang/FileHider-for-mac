@@ -1,5 +1,11 @@
 # AVHider for mac OS X
-~~AVHider~~ oh NO，FileHider是一款将你的文件夹或文件隐藏起来的效率小软件，适用于**macOS X 10.10及以后的macOS版本**。
+~~AVHider~~ oh NO，FileHider是一款将你的文件夹或文件隐藏起来的效率小软件，适用于**macOS X 10.10及以后的macOS版本**。Mac App Store有售，售价为6元，如果这款软件帮助到了您，请从App Store购买一份支持一下我。
+
+<p align="center">  
+  <a href=https://itunes.apple.com/us/app/invisibility-cloak/id1426266978?l=zh&ls=1&mt=12>
+  <img alt="Download on the app store" src="https://user-images.githubusercontent.com/7317008/43209852-4ca39622-904b-11e8-8ce1-cdc3aee76ae9.png" width=160>
+  </a>
+</p>
 
 开发这款软件的**初衷**是~~将xxx.mp4/xxx.avi/xxx.mkv在白天藏起来，免得被别人发现。~~ 在Apple store上发现了一款类似的软件，售价163元，而且卖的不错。我觉得这东西一天就可以搞出来，于是就花了一晚上做了一个非常类似的软件，并将这个应用开源了。
 
