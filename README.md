@@ -11,6 +11,16 @@
   </a>
 </p>
 
+# 软件异常情况的处理方法
+
+如果软件不能正常工作，选择隐藏后仅仅是变灰，尝试在terminal 终端分别运行下面两行命令:
+
+defaults write com.apple.finder AppleShowAllFiles -bool false
+
+killall Finder
+
+# 为什么开发这款软件
+
 开发这款软件的**初衷**是~~将xxx.mp4/xxx.avi/xxx.mkv在白天藏起来，免得被别人发现。~~ 在Apple store上发现了一款类似的软件，售价163元，而且卖的不错。我觉得这东西一天就可以搞出来，于是就花了一晚上做了一个非常类似的软件，并将这个应用开源了。
 
 **对实现细节感兴趣的朋友可以参考[我的博客](http://zhihaozhang.github.io/2018/01/16/FileHider/)**，欢迎fork项目，并贡献您的code。
