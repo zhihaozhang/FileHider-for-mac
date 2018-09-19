@@ -1,5 +1,5 @@
 # AVHider for mac OS X
-~~AVHider~~ oh NO，FileHider是一款将你的文件夹或文件隐藏起来的效率小软件，适用于**macOS X 10.10及以后的macOS版本**。Mac App Store有售，售价为6元，如果这款软件帮助到了您，请从App Store购买一份支持一下我。
+~~AVHider~~ oh NO，FileHider是一款将你的文件夹或文件隐藏起来的效率小软件，适用于**macOS X 10.10及以后的macOS版本**。Mac App Store有售，售价为12元，如果这款软件帮助到了您，请从App Store购买一份支持一下我。
 
 <p align="center">  
    <img alt="Download on the app store" src="https://ws1.sinaimg.cn/large/aa2320a8ly1fnhgwuj4h0j208y08wgls" width=320>
